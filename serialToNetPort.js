@@ -1,5 +1,5 @@
 const net = require('net');
-const serialPort = require('serialport');
+const serialPort = require('serialport-v4');
 
 
 var netConnection;
@@ -62,11 +62,12 @@ netWrite = function(d){
     str = (+d).toString(16);
     buf = Buffer.from(d);
     netConnection.write(buf);
-    l = Buffer.byteLength(buf,'hex');
-    output = [];
-    for (i=0; i<l; i++){
-      char = buf.toString('hex', i, i+1);
-     output.push(char);
+    //the following will let you view the data stream as hex array in the console, uncomment the next 5 lines to enable
+    //l = Buffer.byteLength(buf,'hex');
+    //output = [];
+    //for (i=0; i<l; i++){
+    //  char = buf.toString('hex', i, i+1);
+    // output.push(char);
     }
     console.log('char array = ' + output);
        
